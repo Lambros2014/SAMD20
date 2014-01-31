@@ -90,6 +90,10 @@
 // From module: Part identification macros
 #include <parts.h>
 
+// From module: RTC - Real Time Counter in Calendar Mode (Callback APIs)
+#include <rtc_calendar.h>
+#include <rtc_calendar_interrupt.h>
+
 // From module: SERCOM
 #include <sercom.h>
 #include <sercom_interrupt.h>

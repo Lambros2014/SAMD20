@@ -20,30 +20,32 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <eraseonlaunchrule>1</eraseonlaunchrule>
     <AsfFrameworkConfig>
       <framework-data>
   <options>
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.services.freertos.oled1_xpro_example" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.services.freertos.oled1_xpro_example.user_io" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.utils" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common2.services.gfx_mono" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common2.services.gfx_mono.font" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.drivers.port" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.drivers.sercom.usart" value="Add" config="callback" content-id="Atmel.ASF" />
     <option id="sam0.drivers.system" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="sam0.utils.cmsis.samd20.source.template" value="Add" config="" content-id="Atmel.ASF" />
     <option id="thirdparty.os.freertos-7_4_2" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="sam0.drivers.rtc" value="Add" config="calendar_callback" content-id="Atmel.ASF" />
+    <option id="common.services.freertos.oled1_xpro_example" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.freertos.oled1_xpro_example.user_io" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.utils" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="sam0.utils.cmsis.samd20.source.template" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations>
     <configuration key="config.thirdparty.os.freertos-7_4_2.memory_manager" value="1_static_allocation" default="1_static_allocation" content-id="Atmel.ASF" />
     <configuration key="common2.services.gfx_mono.display" value="ug_2832hsweg04" default="ug_2832hsweg04" content-id="Atmel.ASF" />
     <configuration key="config.sam0.drivers.sercom.usart" value="callback" default="callback" content-id="Atmel.ASF" />
+    <configuration key="config.sam0.drivers.sercom.spi" value="callback" default="callback" content-id="Atmel.ASF" />
   </configurations>
   <files>
     <file path="src/ASF/common2/components/display/ssd1306/ssd1306.c" framework="" version="" source="common2/components/display/ssd1306/ssd1306.c" changed="False" content-id="Atmel.ASF" />
@@ -243,6 +245,12 @@
     <file path="src/ASF/thirdparty/freertos/freertos-7.4.2/Source/tasks.c" framework="" version="" source="thirdparty/freertos/freertos-7.4.2/Source/tasks.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/thirdparty/freertos/freertos-7.4.2/Source/timers.c" framework="" version="" source="thirdparty/freertos/freertos-7.4.2/Source/timers.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/thirdparty/freertos/freertos-7.4.2/readme.txt" framework="" version="" source="thirdparty/freertos/freertos-7.4.2/readme.txt" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/rtc/rtc_calendar.c" framework="" version="3.14.0" source="sam0\drivers\rtc\rtc_calendar.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/rtc/rtc_calendar_interrupt.c" framework="" version="3.14.0" source="sam0\drivers\rtc\rtc_calendar_interrupt.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/rtc/rtc_calendar.h" framework="" version="3.14.0" source="sam0\drivers\rtc\rtc_calendar.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/rtc/quick_start_calendar/qs_rtc_calendar_basic.h" framework="" version="3.14.0" source="sam0\drivers\rtc\quick_start_calendar\qs_rtc_calendar_basic.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/rtc/quick_start_calendar_callback/qs_rtc_calendar_callback.h" framework="" version="3.14.0" source="sam0\drivers\rtc\quick_start_calendar_callback\qs_rtc_calendar_callback.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/rtc/rtc_calendar_interrupt.h" framework="" version="3.14.0" source="sam0\drivers\rtc\rtc_calendar_interrupt.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.14.0/common.services.freertos.oled1_xpro_example.samd20_xplained_pro/html/index.html" />
   <offline-documentation help="" />
@@ -253,6 +261,20 @@
   <board id="board.samd20_xplained_pro" value="Add" config="" content-id="Atmel.ASF" />
 </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <com_atmel_avrdbg_tool_edbg>
+      <ToolOptions>
+        <InterfaceProperties>
+          <JtagEnableExtResetOnStartSession>false</JtagEnableExtResetOnStartSession>
+          <SwdClock>4000000</SwdClock>
+        </InterfaceProperties>
+        <InterfaceName>SWD</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.edbg</ToolType>
+      <ToolNumber>ATML1873040200009217</ToolNumber>
+      <ToolName>XPRO-EDBG</ToolName>
+    </com_atmel_avrdbg_tool_edbg>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -272,6 +294,7 @@
       <Value>GFX_MONO_LCD_HEIGHT=64</Value>
       <Value>SPI_CALLBACK_MODE=true</Value>
       <Value>USART_CALLBACK_MODE=true</Value>
+      <Value>RTC_CALENDAR_ASYNC=true</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.DefaultIncludePath>False</armgcc.compiler.directories.DefaultIncludePath>
@@ -308,6 +331,7 @@
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
       <Value>../src/ASF/sam0/drivers/system/interrupt</Value>
       <Value>../src/ASF/sam0/utils/cmsis/samd20/include/component</Value>
+      <Value>../src/ASF/sam0/drivers/rtc</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
@@ -370,9 +394,10 @@
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
       <Value>../src/ASF/sam0/drivers/system/interrupt</Value>
       <Value>../src/ASF/sam0/utils/cmsis/samd20/include/component</Value>
+      <Value>../src/ASF/sam0/drivers/rtc</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0=true -DBOARD=SAMD20_XPLAINED_PRO -DGFX_MONO_LCD_HEIGHT=64 -DGFX_MONO_UG_2832HSWEG04=1 -DSPI_CALLBACK_MODE=true -DUSART_CALLBACK_MODE=true -D__SAMD20J18__</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0=true -DBOARD=SAMD20_XPLAINED_PRO -DGFX_MONO_LCD_HEIGHT=64 -DGFX_MONO_UG_2832HSWEG04=1 -DSPI_CALLBACK_MODE=true -DUSART_CALLBACK_MODE=true -D__SAMD20J18__ -DRTC_CALENDAR_ASYNC=true</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>%252524(ToolchainDir)\..\..\CMSIS_Atmel</Value>
@@ -414,6 +439,7 @@
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
       <Value>../src/ASF/sam0/drivers/system/interrupt</Value>
       <Value>../src/ASF/sam0/utils/cmsis/samd20/include/component</Value>
+      <Value>../src/ASF/sam0/drivers/rtc</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
 </ArmGcc>
@@ -437,6 +463,7 @@
       <Value>GFX_MONO_LCD_HEIGHT=64</Value>
       <Value>SPI_CALLBACK_MODE=true</Value>
       <Value>USART_CALLBACK_MODE=true</Value>
+      <Value>RTC_CALENDAR_ASYNC=true</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.DefaultIncludePath>False</armgcc.compiler.directories.DefaultIncludePath>
@@ -473,6 +500,7 @@
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
       <Value>../src/ASF/sam0/drivers/system/interrupt</Value>
       <Value>../src/ASF/sam0/utils/cmsis/samd20/include/component</Value>
+      <Value>../src/ASF/sam0/drivers/rtc</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -536,10 +564,11 @@
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
       <Value>../src/ASF/sam0/drivers/system/interrupt</Value>
       <Value>../src/ASF/sam0/utils/cmsis/samd20/include/component</Value>
+      <Value>../src/ASF/sam0/drivers/rtc</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
   <armgcc.assembler.debugging.DebugLevel>Default (-g)</armgcc.assembler.debugging.DebugLevel>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0=true -DBOARD=SAMD20_XPLAINED_PRO -DGFX_MONO_LCD_HEIGHT=64 -DGFX_MONO_UG_2832HSWEG04=1 -DSPI_CALLBACK_MODE=true -DUSART_CALLBACK_MODE=true -D__SAMD20J18__</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0=true -DBOARD=SAMD20_XPLAINED_PRO -DGFX_MONO_LCD_HEIGHT=64 -DGFX_MONO_UG_2832HSWEG04=1 -DSPI_CALLBACK_MODE=true -DUSART_CALLBACK_MODE=true -D__SAMD20J18__ -DRTC_CALENDAR_ASYNC=true</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>%252524(ToolchainDir)\..\..\CMSIS_Atmel</Value>
@@ -581,6 +610,7 @@
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
       <Value>../src/ASF/sam0/drivers/system/interrupt</Value>
       <Value>../src/ASF/sam0/utils/cmsis/samd20/include/component</Value>
+      <Value>../src/ASF/sam0/drivers/rtc</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
   <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
@@ -610,6 +640,9 @@
     <Folder Include="src\ASF\sam0\drivers\" />
     <Folder Include="src\ASF\sam0\drivers\port\" />
     <Folder Include="src\ASF\sam0\drivers\port\quick_start\" />
+    <Folder Include="src\ASF\sam0\drivers\rtc\" />
+    <Folder Include="src\ASF\sam0\drivers\rtc\quick_start_calendar\" />
+    <Folder Include="src\ASF\sam0\drivers\rtc\quick_start_calendar_callback\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\spi\" />
     <Folder Include="src\ASF\sam0\drivers\sercom\spi\quick_start_master\" />
@@ -662,6 +695,36 @@
     <Folder Include="src\config\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\ASF\sam0\drivers\rtc\quick_start_calendar\qs_rtc_calendar_basic.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\sam0\drivers\rtc\quick_start_calendar_callback\qs_rtc_calendar_callback.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\sam0\drivers\rtc\rtc_calendar.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\sam0\drivers\rtc\rtc_calendar.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\sam0\drivers\rtc\rtc_calendar_interrupt.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\sam0\drivers\rtc\rtc_calendar_interrupt.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\config\rtc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\uitask.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\uitask.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\rtc.c">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="src\asf.h">
       <SubType>compile</SubType>
     </None>

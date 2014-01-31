@@ -42,16 +42,30 @@
  */
 
 #include <asf.h>
-#include "demotasks.h"
-
+#include "uitask.h"
+#include "rtc.h"
 
 int main (void)
 {
 	system_init();
 	gfx_mono_init();
+	
+	struct rtc_calendar_time time;
+	time.year  = 2014;
+	time.month = 2;
+	time.day   = 1;
+	time.hour  = 13;
+	time.minute= 59;
+	time.second= 30;
+	
+	configure_rtc_calendar();
+	
+	rtc_calendar_set_time(&time);
+	
+	rtc_calendar_swap_time_mode();
 
-	// Initialize the demo..
-	demotasks_init();
+	// Initialize UI
+	uitask_init();
 
 	// ..and let FreeRTOS run tasks!
 	vTaskStartScheduler();
