@@ -34,3 +34,5 @@ void configure_rtc_calendar( void )
 	
 	rtc_calendar_enable();
 }
+
+ 

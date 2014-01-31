@@ -44,9 +44,7 @@ void ui_print_date(void)
 	sprintf(str, "%i:%i:%"PRIu16"\n", temp.day, temp.month, temp.year);
 
 	//oled1_set_led_state(&oled1, OLED1_LED2_ID, true);
-
 	gfx_mono_draw_string(str, 0, 0, &sysfont);
-
 	//oled1_set_led_state(&oled1, OLED1_LED2_ID, false);
 }
 
@@ -59,9 +57,7 @@ void ui_print_time(void)
 	sprintf(str, "%i:%i:%i", temp.hour, temp.minute, temp.second);
 
 	//oled1_set_led_state(&oled1, OLED1_LED2_ID, true);
-
 	gfx_mono_draw_string(str, 0, 20, &sysfont);
-
 	//oled1_set_led_state(&oled1, OLED1_LED2_ID, false);
 }
 
