@@ -43,13 +43,20 @@
 
 #include <asf.h>
 #include "demotasks.h"
+#include "my_usart.h"
 
+struct usart_module usart_instance;
 
 int main (void)
 {
 	system_init();
 	gfx_mono_init();
+	configure_usart();
+	
+	uint8_t	msg1[] = "msg1\n   ";
+	usart_write_buffer_job(&usart_instance,	msg1, sizeof(msg1));
 
+	
 	// Initialize the demo..
 	demotasks_init();
 
